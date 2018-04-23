@@ -29,9 +29,16 @@ def fill(p,n):
     fx.close()
     return x
 
+#Fill the X features list form the X.txt file
 X=fill(19,"X.txt")
+
+#Fill the Y results from the Y.txt file
 y=fill(3,"Y.txt")
+
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
+
+#Train the system
 k=MultiOutputRegressor(GradientBoostingRegressor(random_state=0)).fit(X, y)
 '''
 k=MultiOutputRegressor(GradientBoostingRegressor(random_state=0)).fit(X_train, y_train).predict(X_test)
@@ -44,6 +51,8 @@ features = []
 i=0
 features.append([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
+
+#realtime analysis
 while 1:
     where = file.tell()
     line = file.readline()
@@ -56,12 +65,15 @@ while 1:
             i+=1
         else: print(line)
         if (i==19):
-            print(features)
+            #Test the system
             emotion=k.predict(features)
             for u in emotion:
-                if(u[0]>60): print("neutre")
-                if(u[1]>60): print("heureux")
-                if(u[2]>60): print("triste")
+                if(u[0]>60):
+                    print("neutre")
+                if(u[1]>60):
+                    print("heureux")
+                if(u[2]>60):
+                    print("triste")
             i=0
         
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
