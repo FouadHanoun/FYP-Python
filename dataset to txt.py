@@ -20,6 +20,7 @@ del features[-1]
 
 f= open("dataset.txt","w+")
 f.write('[')
+u=0
 for z in features:
     a="["
     for y in z:
@@ -27,6 +28,9 @@ for z in features:
     a=a.strip(',')+'],'
     f.write(a)
     f.write('\n')
+    u+=1
+    if(u==70):
+        break
 f.seek(0,2)          #go to the end
 size=f.tell()        #get the size of the file in order to truncate
 f.truncate(size-3)   #remove the last ','
