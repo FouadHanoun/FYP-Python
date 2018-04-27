@@ -33,7 +33,7 @@ def fill(p,n):
 X=fill(19,"X.txt")
 
 #Fill the Y results from the Y.txt file
-y=fill(6,"Y.txt")
+y=fill(9,"Y.txt")
 
 #Train the system
 k=MultiOutputRegressor(GradientBoostingRegressor(random_state=0)).fit(X, y)
@@ -46,8 +46,12 @@ i=0
 features.append([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
 
+f2=open("plotting.txt","w+")
+f2.write("")
+f2.close()
 #realtime analysis
 while 1:
+    f2=open("plotting.txt","a")
     where = file.tell()
     line = file.readline()
     if not line:
@@ -57,21 +61,27 @@ while 1:
         if (":" not in line):
             features[0][i]=float(line.split(" ")[1].strip('\n'))
             i+=1
-        else: print(line,end="")
+        else:
+            f2.write(line)
         if (i==19):
             #Test the system
             emotion=k.predict(features)
             for u in emotion:
-                print(max(0,int(u[0])),"% neutral")
-                print(max(0,int(u[1])),"% happy")
-                print(max(0,int(u[2])),"% sad")
-                print(max(0,int(u[3])),"% pride")
-                print(max(0,int(u[4])),"% guilt")
-                print(max(0,int(u[5])),"% defensive")
-            print()
+                for h in u:
+                    if (h>100): print(u)
+                f2.write(str(max(0,int(u[0])))+" ")
+                f2.write(str(max(0,int(u[1])))+" ")
+                f2.write(str(max(0,int(u[2])))+" ")
+                f2.write(str(max(0,int(u[3])))+" ")
+                f2.write(str(max(0,int(u[4])))+" ")
+                f2.write(str(max(0,int(u[5])))+" ")
+                f2.write(str(max(0,int(u[6])))+" ")
+                f2.write(str(max(0,int(u[7])))+" ")
+                f2.write(str(max(0,int(u[8])))+" ")
+                f2.write("\n")
             i=0
+    f2.close()    
 
-
-
-'''for i in range (0,50):
+'''
+for i in range (0,50):
     print(mean_absolute_error(y_test[i], k[i]))'''

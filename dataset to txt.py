@@ -29,7 +29,7 @@ for z in features:
     f.write(a)
     f.write('\n')
     u+=1
-    if(u==70):
+    if(u==140):
         break
 f.seek(0,2)          #go to the end
 size=f.tell()        #get the size of the file in order to truncate
