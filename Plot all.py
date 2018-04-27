@@ -18,7 +18,6 @@ for z in range(0,9):
 for line in file:
     if(":" not in line):
         line=line.split(" ")
-        del line[-1]
         for i in range(0,9):
             features[i].append(int(line[i]))
     else:
@@ -27,12 +26,12 @@ for line in file:
 T=[]
 p=[]
 tt=np.array(timestamp)
-x=np.linspace(tt.min(),tt.max(),20)
+x=np.linspace(tt.min(),tt.max(),100)
 
-for z in range(0,9):
-    T.append(np.array(features[z]))
+for z in range(0,8):
+    T.append(np.array(features[z+1]))
     p.append(spline(tt,T[z],x))
-    plt.plot(x,p[z],label=emotions[z])
-plt.ylim(0, 100)
+    plt.plot(x,p[z],label=emotions[z+1])
+plt.ylim(ymax = 100, ymin = 0)
 plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 plt.show()

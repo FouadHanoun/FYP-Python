@@ -67,8 +67,6 @@ while 1:
             #Test the system
             emotion=k.predict(features)
             for u in emotion:
-                for h in u:
-                    if (h>100): print(u)
                 f2.write(str(max(0,int(u[0])))+" ")
                 f2.write(str(max(0,int(u[1])))+" ")
                 f2.write(str(max(0,int(u[2])))+" ")
