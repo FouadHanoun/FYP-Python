@@ -1,7 +1,7 @@
 import os
 # Writing the dataset in text
 
-filename = 'C:\\Users\\fouad.hannoun\\AppData\\Local\\Packages\\a4548d07-af25-4b98-b7b4-ad4c4798fc82_q8p7fyft9r39a\\LocalState\\Test Folder\\sample.txt'
+filename = 'C:\\Users\\fouad.hannoun\\AppData\\Local\\Packages\\a4548d07-af25-4b98-b7b4-ad4c4798fc82_q8p7fyft9r39a\\LocalState\\Test Folder\\Qutentin 5-11-2018\\a.txt'
 file = open(filename,'r')
 features = []
 i=0
@@ -15,6 +15,7 @@ for line in file:
         features.append([])
         i=0
         j+=1
+        
 del features[-1]
 
 

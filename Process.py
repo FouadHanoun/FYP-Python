@@ -33,13 +33,13 @@ def fill(p,n):
 X=fill(19,"X.txt")
 
 #Fill the Y results from the Y.txt file
-y=fill(9,"Y.txt")
+y=fill(8,"Y.txt")
 
 #Train the system
 k=MultiOutputRegressor(GradientBoostingRegressor(random_state=0)).fit(X, y)
 
                                  
-filename = 'C:\\Users\\fouad.hannoun\\AppData\\Local\\Packages\\a4548d07-af25-4b98-b7b4-ad4c4798fc82_q8p7fyft9r39a\\LocalState\\Test Folder\\sample.txt'
+filename = 'C:\\Users\\fouad.hannoun\\AppData\\Local\\Packages\\a4548d07-af25-4b98-b7b4-ad4c4798fc82_q8p7fyft9r39a\\LocalState\\Test Folder\\Qutentin 5-11-2018\\sad.txt'
 file = open(filename,'r')
 features = []
 i=0
@@ -75,7 +75,6 @@ while 1:
                 f2.write(str(max(0,int(u[5])))+" ")
                 f2.write(str(max(0,int(u[6])))+" ")
                 f2.write(str(max(0,int(u[7])))+" ")
-                f2.write(str(max(0,int(u[8])))+" ")
                 f2.write("\n")
             i=0
     f2.close()    
